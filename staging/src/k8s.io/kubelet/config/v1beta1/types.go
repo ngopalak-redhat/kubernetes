@@ -1030,9 +1030,11 @@ type ShutdownGracePeriodByPodPriority struct {
 }
 
 type MemorySwapConfiguration struct {
-	// swapBehavior configures swap memory available to container workloads. May be one of
-	// "", "NoSwap": workloads can not use swap, default option.
-	// "LimitedSwap": workload swap usage is limited. The swap limit is proportionate to the container's memory request.
+	// swapBehavior configures swap memory available to container workloads:
+	//   - "" (empty) or NoSwap
+	//       - workloads cannot use swap (default)
+	//   - LimitedSwap
+	//       - workload swap usage is limited proportionate to the container's memory request
 	// +featureGate=NodeSwap
 	// +optional
 	SwapBehavior string `json:"swapBehavior,omitempty"`
